@@ -9,6 +9,7 @@ const Team = () => import('@/views/team/team.vue') // 团队
 const OrderForm = () => import('@/views/orderForm/orderForm.vue') // 订单
 const Mine = () => import('@/views/Mine/mine.vue') // 我的
 const ExChange = () => import('@/views/exchange/exchange.vue') // 我的
+const XinXi = () => import('@/views/Mine/xinxi.vue') // 我的
 
 const Listcontent = () => import('@/views/Home/listcontent.vue')
 const Listtwo = () => import('@/views/Home/listtwo.vue')
@@ -49,6 +50,11 @@ const router = new VueRouter({
           path: '/mine',
           name: 'mine',
           component: Mine
+        },
+        {
+          path: '/xinxi',
+          name: 'xinxi',
+          component: XinXi
         },
         {
           path: '/listcontent',
