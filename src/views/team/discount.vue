@@ -10,18 +10,6 @@
           name="ellipsis"
           size="18"
         />
-        <!-- <van-popover
-          v-model="showPopover"
-          trigger="click"
-          :actions="actions"
-          @select="onSelect"
-        >
-          <template #reference>
-            <van-button type="primary">
-              浅色风格
-            </van-button>
-          </template>
-        </van-popover> -->
       </template>
     </van-nav-bar>
     <div class="username">
@@ -43,20 +31,40 @@
         </van-col>
       </van-row>
     </div>
-    <van-row style="margin: 10px;">
+    <van-row
+      v-for="(item, index) in itemList"
+      :key="index"
+      style="margin: 10px; padding: 20px; box-sizing: border-box; border-bottom: 0.5px solid #ccc;"
+    >
       <van-col span="6">
-        渠道
+        {{ item.name }}
       </van-col>
       <van-col span="6">
-        代理折扣
+        <input
+          v-model="item.dlzk"
+          type="text"
+          class="zk"
+        >
       </van-col>
       <van-col span="6">
-        状态
+        <van-switch
+          v-model="item.zt"
+          size="20px"
+        />
       </van-col>
       <van-col span="6">
-        我的折扣
+        <span style="display: block;width: 70px;height: 22px;line-height: 22px; background: #e2f9fb;margin-left: 5px;">{{ item.wdzk }}</span>
       </van-col>
     </van-row>
+    <div class="tjBtn">
+      <van-button
+        type="info"
+        round
+        block
+      >
+        保 存
+      </van-button>
+    </div>
   </div>
 </template>
 
@@ -65,9 +73,38 @@ export default {
   data () {
     return {
       newId: '',
-      showPopover: false,
-      // 通过 actions 属性来定义菜单选项
-      actions: [{ text: '选项一' }, { text: '选项二' }, { text: '选项三' }]
+      zkValue: '0.800',
+      myZkValue: '0.9',
+      itemList: [
+        {
+          name: '腾讯大王卡',
+          dlzk: '0.800',
+          zt: true,
+          wdzk: '0.9',
+          id: 0
+        },
+        {
+          name: '话费卡LT',
+          dlzk: '0.800',
+          zt: false,
+          wdzk: '0.9',
+          id: 1
+        },
+        {
+          name: '移动宝藏卡',
+          dlzk: '0.800',
+          zt: false,
+          wdzk: '0.9',
+          id: 2
+        },
+        {
+          name: '电信星卡49',
+          dlzk: '0.800',
+          zt: true,
+          wdzk: '0.9',
+          id: 3
+        }
+      ]
     }
   },
   watch: {
@@ -110,5 +147,17 @@ export default {
 .van-row {
     text-align: center;
     font-size: 15px;
+}
+.zk {
+  width: 70px;
+  background: #3296fa;
+  border: none;
+  outline: none;
+  color: #fff;
+  text-align: center;
+}
+.tjBtn {
+  padding: 20px 50px;
+  box-sizing: border-box;
 }
 </style>
